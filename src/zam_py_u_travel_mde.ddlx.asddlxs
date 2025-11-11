@@ -1,0 +1,99 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:{
+   typeName: 'Travel',
+   typeNamePlural: 'Travel Requests'  ,
+   title: { value: 'TravelId' },
+   description: { value: 'Memo' } 
+}
+annotate entity ZAM_PY_U_TRAVEL
+   with
+{
+   --Second screen ( applies only and only on Object Page )
+   @UI.facet: [
+       {
+           purpose: #STANDARD,
+           type: #COLLECTION,
+           id: 'spiderman',
+           label: 'General Information',
+           position: 10
+       },
+       {
+           id: 'TravelBasic',
+           purpose: #STANDARD,
+           type: #IDENTIFICATION_REFERENCE,
+           parentId: 'spiderman',
+           position: 10,
+           label: 'More Info'
+       },
+       {
+           id: 'TravelDates',
+           type: #FIELDGROUP_REFERENCE,
+           purpose: #STANDARD,
+           parentId: 'spiderman',
+           label: 'Dates',
+           position: 30,
+           targetQualifier: 'superman'       
+       },
+       {
+           id: 'Pricing',
+           type: #FIELDGROUP_REFERENCE,
+           purpose: #STANDARD,
+           parentId: 'spiderman',
+           label: 'Pricing',
+           position: 20,
+           targetQualifier: 'wonderwomen'       
+       },
+       {
+           id: 'TotalPrice',
+           purpose: #HEADER,
+           type: #DATAPOINT_REFERENCE,
+           position: 10,
+           targetQualifier: 'MyTravelCost'
+       },
+       {
+           id: 'TravelStatus',
+           purpose: #HEADER,
+           type: #DATAPOINT_REFERENCE,
+           position: 20,
+           targetQualifier: 'MyTravelStatus'
+       }
+   ]
+   @UI.selectionField: [{ position: 10 }]
+   @UI.lineItem: [{ position: 10 },
+                  { type: #FOR_ACTION, dataAction: 'set_booked_status', label: 'Set Status' }]
+   @UI.identification: [{ position: 10 }]
+   TravelId;
+   @UI.selectionField: [{ position: 20 }]
+   @UI.lineItem: [{ position: 20 }]
+   @UI.identification: [{ position: 20 }]   
+   AgencyId;
+   @UI.selectionField: [{ position: 30 }]
+   @UI.lineItem: [{ position: 30, importance: #HIGH }]
+   @UI.identification: [{ position: 30 }]
+   CustomerId;
+   @UI.selectionField: [{ position: 40 }]
+   @UI.lineItem: [{ position: 40 }]
+   @UI.fieldGroup: [{ position: 10, qualifier: 'superman' }]
+   BeginDate;
+   @UI.fieldGroup: [{ position: 20, qualifier: 'superman' }]
+   EndDate;
+   @UI.fieldGroup: [{ position: 20, qualifier: 'wonderwomen' }]
+   BookingFee;
+   @UI.lineItem: [{ position: 50 }]
+   @UI.fieldGroup: [{ position: 10, qualifier: 'wonderwomen' }]
+   @UI.dataPoint: { qualifier: 'MyTravelCost', title: 'Overall Cost' }
+   TotalPrice;
+   @UI.fieldGroup: [{ position: 30, qualifier: 'wonderwomen' }]
+   CurrencyCode;
+   @UI.identification: [{ position: 40 }]
+   Memo;
+   @UI.lineItem: [{ position: 60 }]
+   @UI.fieldGroup: [{ position: 11, qualifier: 'wonderwomen' }]
+   @UI.dataPoint: { qualifier: 'MyTravelStatus', title: 'Overall Status' }
+   Status;
+//    CreatedBy;
+//    CreatedAt;
+//    LastChangedBy;
+//    LastChangedAt;
+  
+}

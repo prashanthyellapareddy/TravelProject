@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_AMPY_SO_HDR'
+@MappingRole: true
+define role ZC_AMPY_SO_HDR {
+  grant select on ZC_AMPY_SO_HDR
+  where INHERITING CONDITIONS FROM ENTITY ZR_AMPY_SO_HDR REPLACING { ROOT WITH _BaseEntity };
+}

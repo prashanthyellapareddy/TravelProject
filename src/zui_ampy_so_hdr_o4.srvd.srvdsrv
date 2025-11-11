@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_AMPY_SO_HDR'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_AMPY_SO_HDR'
+  }
+}
+define service ZUI_AMPY_SO_HDR_O4 provider contracts odata_v4_ui {
+  expose ZC_AMPY_SO_HDR as SalesOrder;
+}

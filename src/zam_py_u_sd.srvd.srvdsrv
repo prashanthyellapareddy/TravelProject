@@ -1,0 +1,8 @@
+@EndUserText.label: 'Unamanged Service definition'
+define service ZAM_PY_U_SD {
+  expose ZAM_PY_U_TRAVEL         as Travel;
+  expose ZAM_PY_U_AGENCY         as Agency;
+  expose ZAM_PY_U_CUSTOMER       as Customer;
+  expose /DMO/I_Travel_Status_VH as Status;
+  expose I_Currency              as Currency;
+}

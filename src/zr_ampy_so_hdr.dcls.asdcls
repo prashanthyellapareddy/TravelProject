@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZR_AMPY_SO_HDR'
+@MappingRole: true
+define role ZR_AMPY_SO_HDR {
+  grant select on ZR_AMPY_SO_HDR
+  where TRUE;
+}

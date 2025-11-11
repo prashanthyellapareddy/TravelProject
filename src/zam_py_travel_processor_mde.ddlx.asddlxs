@@ -1,0 +1,147 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:{
+   typeName: 'Travel',
+   typeNamePlural: 'Travel Requests'  ,
+   title: { value: 'TravelId' },
+   description: { value: 'Description' } 
+}
+annotate entity ZAM_PY_TRAVEL_PROCESSOR with
+{
+ --Second screen ( applies only and only on Object Page )
+   @UI.facet: [
+       {
+           purpose: #STANDARD,
+           type: #COLLECTION,
+           id: 'spiderman',
+           label: 'General Information',
+           position: 10
+       },
+       {
+           id: 'TravelBasic',
+           purpose: #STANDARD,
+           type: #IDENTIFICATION_REFERENCE,
+           parentId: 'spiderman',
+           position: 10,
+           label: 'More Info'
+           //newly added
+//           targetQualifier: 'test1'
+       },
+       //newly added++
+//        {
+//           id: 'TravelBasic1',
+//           purpose: #STANDARD,
+//           type: #IDENTIFICATION_REFERENCE,
+//           parentId: 'spiderman',
+//           position: 15,
+//           label: 'More Info1',
+//           targetQualifier: 'test2'    
+//       },
+       //newly added++
+       {
+           id: 'TravelDates',
+           type: #FIELDGROUP_REFERENCE,
+           purpose: #STANDARD,
+           parentId: 'spiderman',
+           label: 'Dates',
+           position: 30,
+           targetQualifier: 'superman'       
+       },
+       {
+           id: 'Pricing',
+           type: #FIELDGROUP_REFERENCE,
+           purpose: #STANDARD,
+           parentId: 'spiderman',
+           label: 'Pricing',
+           position: 20,
+           targetQualifier: 'wonderwomen'       
+       },
+       {
+           id: 'TotalPrice',
+           purpose: #HEADER,
+           type: #DATAPOINT_REFERENCE,
+           position: 10,
+           targetQualifier: 'MyTravelCost'
+       },
+       {
+           id: 'TravelStatus',
+           purpose: #HEADER,
+           type: #DATAPOINT_REFERENCE,
+           position: 20,
+           targetQualifier: 'MyTravelStatus'
+       },
+        {
+           id: 'bookingDetails',
+           label: 'Bookings',
+           purpose: #STANDARD,
+           type: #LINEITEM_REFERENCE,
+           targetElement: '_Booking',
+           position: 20
+       },
+              {
+           id: 'attachmentDetails',
+           label: 'Attachments',
+           purpose: #STANDARD,
+           type: #LINEITEM_REFERENCE,
+           targetElement: '_Attachment',
+           position: 30
+       }
+          ]
+
+
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 }, { type: #FOR_ACTION, dataAction: 'copyTravel', label: 'Copy Travel Id' }]
+   @UI.identification: [{ position: 10 }]
+//   @UI.identification: [{ position: 10, qualifier: 'test1' }]  
+     TravelId;
+  
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+//   @UI.identification: [{ position: 20 , qualifier: 'test2'}]
+    AgencyId;
+  
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+   @UI.identification: [{ position: 30 }]
+    CustomerId;
+  
+   @UI.identification: [{ position: 40 }]
+        Description;
+  
+  @UI.selectionField: [{ position: 40 }]
+  @UI.lineItem: [{ position: 40 }]
+   @UI.fieldGroup: [{ position: 10, qualifier: 'superman' }]
+    BeginDate;
+   @UI.fieldGroup: [{ position: 20, qualifier: 'superman' }]
+      EndDate;
+  @UI.fieldGroup: [{ position: 20, qualifier: 'wonderwomen' }]
+        BookingFee;
+  
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'wonderwomen' }]
+   @UI.dataPoint: { qualifier: 'MyTravelCost', title: 'Overall Cost' }
+  
+  TotalPrice;
+   @UI.fieldGroup: [{ position: 30, qualifier: 'wonderwomen' }]
+     CurrencyCode;
+  
+  @UI.lineItem: [{ position: 60, criticality: 'IconColor' }]
+  @UI.fieldGroup: [{ position: 11, qualifier: 'wonderwomen' }]
+   @UI.dataPoint: { qualifier: 'MyTravelStatus', title: 'Overall Status' }
+  OverallStatus;
+     @UI.lineItem: [{ position: 70, importance: #HIGH }]
+   CO2Tax;
+   @UI.lineItem: [{ position: 80, importance: #HIGH }]
+   dayOfTheFlight;
+  //    CreatedBy;
+  //    CreatedAt;
+  //    LastChangedBy;
+  //    LastChangedAt;
+  /* Associations */
+  //    _Agency;
+  //    _Booking;
+  //    _Currency;
+  //    _Customer;
+  //    _OverallStatus;
+
+}
